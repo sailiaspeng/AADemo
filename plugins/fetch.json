@@ -1,0 +1,18 @@
+{
+  "cordova-plugin-geolocation": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-geolocation@5.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-android-auto-navigation": {
+    "source": {
+      "type": "registry",
+      "id": "file:plugins-local/cordova-plugin-android-auto-navigation"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

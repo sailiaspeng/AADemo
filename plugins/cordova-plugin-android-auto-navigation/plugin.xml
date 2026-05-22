@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-android-auto-navigation"
+        version="0.1.0">
+    <name>AndroidAutoNavigation</name>
+    <description>Cordova Android Auto Car App integration with navigation templates.</description>
+    <license>MIT</license>
+    <engines>
+        <engine name="cordova-android" version=">=12.0.0" />
+    </engines>
+
+    <js-module src="www/androidautonav.js" name="AndroidAutoNav">
+        <clobbers target="window.plugins.androidAutoNav" />
+    </js-module>
+
+    <platform name="android">
+        <framework src="androidx.car.app:app:1.7.0" />
+        <framework src="com.google.android.gms:play-services-location:21.0.1" />
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+            <uses-permission android:name="androidx.car.app.ACCESS_SURFACE" />
+            <uses-permission android:name="androidx.car.app.NAVIGATION_TEMPLATES" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+            <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+        </config-file>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="AndroidAutoNavBridge">
+                <param name="android-package" value="com.cordova.androidauto.AndroidAutoNavBridge" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <meta-data android:name="com.google.android.gms.car.application" android:resource="@xml/automotive_app_desc" />
+            <meta-data android:name="androidx.car.app.minCarApiLevel" android:value="1" />
+            <service
+                android:name="com.cordova.androidauto.AutoNavCarAppService"
+                android:exported="true">
+                <meta-data android:name="androidx.car.app.minCarApiLevel" android:value="1" />
+                <intent-filter>
+                    <action android:name="androidx.car.app.CarAppService" />
+                    <category android:name="androidx.car.app.category.NAVIGATION" />
+                </intent-filter>
+            </service>
+        </config-file>
+
+        <resource-file src="src/android/res/xml/automotive_app_desc.xml" target="res/xml/automotive_app_desc.xml" />
+
+        <source-file src="src/android/auto/AndroidAutoNavState.java" target-dir="src/com/cordova/androidauto" />
+        <source-file src="src/android/auto/AndroidAutoNavBridge.java" target-dir="src/com/cordova/androidauto" />
+        <source-file src="src/android/auto/AutoNavCarAppService.java" target-dir="src/com/cordova/androidauto" />
+        <source-file src="src/android/auto/AutoNavSession.java" target-dir="src/com/cordova/androidauto" />
+        <source-file src="src/android/auto/AutoNavScreen.java" target-dir="src/com/cordova/androidauto" />
+        <source-file src="src/android/auto/AutoNavSurfaceRenderer.java" target-dir="src/com/cordova/androidauto" />
+    </platform>
+</plugin>

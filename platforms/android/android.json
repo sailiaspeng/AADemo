@@ -1,0 +1,134 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "res/xml/config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"AndroidAutoNavBridge\"><param name=\"android-package\" value=\"com.cordova.androidauto.AndroidAutoNavBridge\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "AndroidManifest.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-feature android:name=\"android.hardware.location.gps\" android:required=\"true\" />",
+              "count": 1
+            }
+          ],
+          "/manifest/application": [
+            {
+              "xml": "<meta-data android:name=\"com.google.android.gms.car.application\" android:resource=\"@xml/automotive_app_desc\" />",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"androidx.car.app.minCarApiLevel\" android:value=\"1\" />",
+              "count": 1
+            },
+            {
+              "xml": "<service android:exported=\"true\" android:name=\"com.cordova.androidauto.AutoNavCarAppService\"><meta-data android:name=\"androidx.car.app.minCarApiLevel\" android:value=\"1\" /><intent-filter><action android:name=\"androidx.car.app.CarAppService\" /><category android:name=\"androidx.car.app.category.NAVIGATION\" /></intent-filter></service>",
+              "count": 1
+            }
+          ],
+          "/manifest": [
+            {
+              "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"androidx.car.app.ACCESS_SURFACE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"androidx.car.app.NAVIGATION_TEMPLATES\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.FOREGROUND_SERVICE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.FOREGROUND_SERVICE_LOCATION\" />",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "app/src/main/AndroidManifest.xml": {
+        "parents": {
+          "/manifest/application": [
+            {
+              "xml": "<meta-data android:name=\"com.transistorsoft.locationmanager.license_key\" android:value=\"5d7dc4cdfddbc7dba97c4ebd340ef1b10ea93c4b583231eecc8812e38ef7d0d3\" />",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {
+    "cordova-plugin-geolocation": {
+      "GPS_REQUIRED": "true",
+      "PACKAGE_NAME": "com.example.autoarcgis"
+    },
+    "cordova-plugin-android-auto-navigation": {
+      "PACKAGE_NAME": "com.example.autoarcgis"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "cordova-plugin-geolocation.geolocation",
+      "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "navigator.geolocation"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.PositionError",
+      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-android-auto-navigation.AndroidAutoNav",
+      "file": "plugins/cordova-plugin-android-auto-navigation/www/androidautonav.js",
+      "pluginId": "cordova-plugin-android-auto-navigation",
+      "clobbers": [
+        "window.plugins.androidAutoNav"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-geolocation": "5.0.0",
+    "cordova-plugin-android-auto-navigation": "0.1.0"
+  }
+}

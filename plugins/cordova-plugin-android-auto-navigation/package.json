@@ -1,0 +1,18 @@
+﻿{
+  "name": "cordova-plugin-android-auto-navigation",
+  "version": "0.1.0",
+  "description": "Cordova Android Auto Car App integration with navigation templates.",
+  "cordova": {
+    "id": "cordova-plugin-android-auto-navigation",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "android-auto",
+    "car-app"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+            https://cordova.apache.org/docs/en/latest/
+        Some notes:
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy"
+            content="default-src 'self' data: blob: https://ssl.gstatic.com https://js.arcgis.com https://*.arcgis.com https://services.arcgisonline.com https://server.arcgisonline.com 'unsafe-eval'; connect-src 'self' data: blob: https://devmulti29.transfinder.com https://*.arcgis.com https://js.arcgis.com https://services.arcgisonline.com https://server.arcgisonline.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org; script-src 'self' 'unsafe-eval' https://js.arcgis.com; style-src 'self' 'unsafe-inline' https://js.arcgis.com; worker-src 'self' blob:; media-src *; img-src 'self' data: content: blob: https://js.arcgis.com https://*.arcgis.com https://services.arcgisonline.com https://server.arcgisonline.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org; font-src 'self' data: https://js.arcgis.com;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport"
+            content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet"
+            href="https://js.arcgis.com/5.0/esri/themes/light/main.css">
+        <link rel="stylesheet" href="css/index.css">
+        <title>AutoArcGIS</title>
+    </head>
+    <body>
+        <div id="mapView" class="map-view"></div>
+        <!-- show-panel button, visible only when panel is collapsed -->
+        <button class="panel-toggle" id="panelToggle" title="Show panel">&#9881;</button>
+        <!-- north-up / heading reset button -->
+        <button class="compass-btn" id="compassBtn" title="Toggle north / heading" aria-pressed="false"><img src="assets/images/orientation.svg" alt="orientation" style="width:100%;height:100%;display:block;"></button>
+        <div class="zoom-controls" id="zoomControls" aria-label="Zoom controls">
+            <button class="zoom-btn" id="zoomInBtn" title="Zoom in">+</button>
+            <button class="zoom-btn" id="zoomOutBtn" title="Zoom out">-</button>
+        </div>
+        <div class="status-panel" id="statusPanel">
+            <button class="panel-hide-btn" id="panelHideBtn" title="Hide panel">✕</button>
+            <h1>AutoArcGIS</h1>
+            <div id="deviceready" class="status">
+                <p class="event listening">Connecting to device...</p>
+                <p class="event received">Device is ready</p>
+            </div>
+            <p id="locationStatus" class="location-status">Initializing GPS...</p>
+               <p id="debugStatus" class="debug-status">Debug: waiting for GPS...</p>
+            <p id="patrolStatus" class="location-status">Patrol points: fetched
+                0, drawn 0</p>
+            <div class="query-control">
+                <label for="queryExtentInput">Query extent (meters)</label>
+                <div class="query-control-row">
+                    <input id="queryExtentInput" type="number" min="50"
+                        step="50" inputmode="numeric" value="500">
+                    <button id="queryExtentApply" type="button">Apply</button>
+                </div>
+            </div>
+            <div class="query-control">
+                <label for="locationModeSelect">Location mode</label>
+                <div class="query-control-row">
+                    <select id="locationModeSelect">
+                        <option value="real-vehicle">Real vehicle</option>
+                        <option value="simulator">Simulator</option>
+                    </select>
+                    <button id="locationModeApply" type="button">Apply</button>
+                </div>
+            </div>
+        </div>
+        <script src="cordova.js"></script>
+        <script src="https://js.arcgis.com/5.0/"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

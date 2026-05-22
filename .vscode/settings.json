@@ -1,0 +1,9 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^npx cordova build android$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "npx cordova": true
+    }
+}

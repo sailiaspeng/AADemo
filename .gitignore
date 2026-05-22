@@ -1,0 +1,26 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules
+
+# compiled code
+dist
+
+# Cordova
+/cordova/plugins
+/cordova/platforms
+/cordova/node_modules
+/cordova/res
+/cordova/.DS_Store
+/documentation
+/cordova/www
+
+#unit tests
+/coverage
+
+.idea/
+.gradle-user-home
+.codegpt

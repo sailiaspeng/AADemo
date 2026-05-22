@@ -1,0 +1,16 @@
+android {
+    defaultConfig {
+      ndk {
+        abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+      }
+    }
+    sourceSets {
+        main.java {
+            srcDirs += 'src/main/kotlin'
+        }
+    }
+}
+
+dependencies {
+    implementation "com.google.android.gms:play-services-location:21.0.1"
+}
